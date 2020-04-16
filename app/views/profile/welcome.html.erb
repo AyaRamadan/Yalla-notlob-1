@@ -1,3 +1,4 @@
+
 <h1>welcome <%= current_user[:username] %></h1>
 <% unless current_user.provider.nil? %>
     <%= image_tag(current_user.avatar) %>

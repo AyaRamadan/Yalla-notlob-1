@@ -20,8 +20,20 @@
   <% end -%>
 
   <%- if devise_mapping.omniauthable? %>
+  <div class="text-center">
     <%- resource_class.omniauth_providers.each do |provider| %>
-      <%= link_to t('.sign_in_with_provider', provider: OmniAuth::Utils.camelize(provider)), omniauth_authorize_path(resource_name, provider) %><br />
+      <% if provider.to_s == "google_oauth2" %>
+        <%= link_to(omniauth_authorize_path(resource_name, provider),class: "btn btn-primary p-3 mt-4")  do %>
+          <span><i class="fab fa-google fa-3x mx-2"></i> <%= t('sign in with Google', provider: OmniAuth::Utils.camelize(provider)) %></span>
+        <% end %>
+        <br>
+      <% else %>
+        <%= link_to(omniauth_authorize_path(resource_name, provider),class: "btn btn-primary p-3 mt-4")  do %>
+          <span><i class="fab fa-<%= provider %>-f fa-3x mx-2"></i> <%= t('.sign_in_with_provider', provider: OmniAuth::Utils.camelize(provider)) %></span>
+        <% end %>
+        <br>
+      <% end %>
     <% end -%>
   <% end -%>
+  </div>
 </div>
