@@ -1,2 +1,11 @@
-<h1>welcome <%= current_user[:username]%></h1>
+<h1>welcome <%= current_user[:username] %></h1>
+<% unless current_user.provider.nil? %>
+    <%= image_tag(current_user.avatar) %>
+<% else %>
+    <% if current_user.local_avatar.attached? %>
+        <%= image_tag(current_user.local_avatar) %>
+    <% else %>
+        <%= "no image for this user"%>
+    <% end %>
+<% end %>
 <p>Find me in app/views/profile/welcome.html.erb</p>
