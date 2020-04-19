@@ -12,22 +12,36 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :from %>
-    <%= form.text_field :from %>
-  </div>
-
-  <div class="field">
+    </br>
+    </br>
     <%= form.label :category %>
-    <%= select(:order, :category, [['breakfast', 'breakfast'], ['lunch', 'lunch'], ['dinner', 'dinner']]) %>
+    <%= select(:order, :category, [['breakfast', 'breakfast'], ['lunch', 'lunch'], ['dinner', 'dinner']] , {}, {class: 'form-control'}) %>
+    </br>
+    </br>
   </div>
 
   <div class="field">
-      <%= label_tag(:order_menu, "menu") %>
-      <%= form.file_field :menu %>
+    </br>
+    </br>
+    <%= form.label :from %>
+    <p>write the resturant name</p>
+    <%= form.text_field :from ,class:"form-control" %>
+    </br>
+    </br>
+  </div>
+
+
+  <div class="field">
+    </br>
+    </br>
+    <%= label_tag(:order_menu, "menu") %>
+    <%= form.file_field :menu %>
+    </br>
+    </br>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class:"btn btn-primary"%>
   </div>
 <% end %>
 
