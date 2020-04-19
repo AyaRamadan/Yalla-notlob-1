@@ -10,7 +10,7 @@
         <tr>
           <th>Order</th>
           <th>Resturants</th>
-          <th>User</th>
+          <th>Owner</th>
           <th>invited</th>
           <th>joined</th>
           <th>Status</th>
@@ -23,13 +23,15 @@
           <tr>
             <td><%= order.category %></td>
             <td><%= order.from %></td>
-            <td><%= order.user_id %></td>
+            <td><%= order.user.username %></td>
             <td>Not Done Yet</td>
             <td>Not Done Yet</td>
             <td><%= order.status %></td>
             <td><%= link_to 'View', order %></td>
-            <td><%= link_to 'Edit', edit_order_path(order) %></td>
-            <td><%= link_to 'Destroy', order, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+            <% if order.status == "waiting" %>
+              <td><%= link_to 'Finish', finish_path(order) %></td>
+              <td><%= link_to 'Cancel', cancel_path(order), data: { confirm: 'Are you sure?' } %></td>
+            <% end %>
           </tr>
         <% end %>
       </tbody>

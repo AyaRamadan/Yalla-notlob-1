@@ -1,5 +1,5 @@
 class OrdersController < ApplicationController
-  before_action :set_order, only: [:show, :edit, :update, :destroy]
+  before_action :set_order, only: [:show, :edit, :update, :destroy,:cancel,:finish]
 
   # GET /orders
   # GET /orders.json
@@ -20,6 +20,18 @@ class OrdersController < ApplicationController
   # GET /orders/1/edit
   def edit
   end
+
+  # PATCH/PUT /orders/1/finish
+  def finish
+    @order.update(status:"finished")
+    redirect_to orders_path
+  end
+
+  def cancel
+    @order.update(status:"canceled")
+    redirect_to orders_path
+  end
+
 
   # POST /orders
   # POST /orders.json
