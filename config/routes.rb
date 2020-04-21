@@ -1,5 +1,12 @@
 Rails.application.routes.draw do
+
   resources :groups
+
+  get '/orders/:id/finish/', to: 'orders#finish',as: "finish"
+  get '/orders/:id/cancel/', to: 'orders#cancel',as: "cancel"
+
+  resources :orders
+
   devise_for :users, controllers: { omniauth_callbacks: 'users/omniauth_callbacks' }
   
   root 'profile#welcome'
