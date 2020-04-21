@@ -1,7 +1,10 @@
 <nav class="navbar navbar-light bg-light justify-content-between">
   <a class="navbar-brand">Navbar</a>
+  
   <form class="form-inline">
-    <%= link_to "logout", destroy_user_session_path, method: :DELETE ,class: "btn btn-danger my-2 my-sm-0" %>
+    <%= link_to "Groups", groups_path, method: :GET  %>
+    <%= link_to "logout", destroy_user_session_path, method: :DELETE ,class: "btn btn-danger my-2 my-sm-0" %>   
+    
   </form>
 </nav>
 

@@ -1,0 +1,30 @@
+<h1>Groups</h1>
+
+<%= render 'form', group: @group %>
+<p id="notice"><%= notice %></p>
+
+<h1>My Groups</h1>
+
+<table>
+  <thead>
+    <tr>
+      
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @groups.each do |group| %>
+      <tr>
+        <td><%= group.title %></td>
+        <td><%= link_to 'Show', group %></td>
+        <td><%= link_to 'Delete', group, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+
+<%= link_to 'Back', groups_path %>
