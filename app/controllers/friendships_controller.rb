@@ -5,7 +5,7 @@ class FriendshipsController < ApplicationController
   # GET /friendships.json
   def index
     @friendships = Friendship.all
-    @users=User.all
+    @users =User.where.not(id: current_user.id)
     @friendship = Friendship.new
   end
 
@@ -26,20 +26,33 @@ class FriendshipsController < ApplicationController
   # POST /friendships
   # POST /friendships.json
   def create
+    # @friendship = Friendship.new(friendship_params)
+
+    # return puts (params["friendship"]["friend_id"])
+     @friendship = Friendship.select('*').where(friend_id: params["friendship"]["friend_id"] , user_id: current_user  )
+   
+    if @friendship.size.zero?
     @friendship = Friendship.new(friendship_params)
     @friendship.user_id=current_user.id
-    # @users=User.all
-    @users =User.where.not(id: current_user.id)
+    @users=User.all 
     @current_user
+
     respond_to do |format|
       if @friendship.save
         format.html { redirect_to friendships_url, notice: 'Friendship was successfully created.' }
         format.json { render :index, status: :created, location: @friendship }
       else
-        format.html { render :new }
+        format.html { render :index }
         format.json { render json: @friendship.errors, status: :unprocessable_entity }
       end
     end
+  else
+    respond_to do |format|
+      format.html { redirect_to friendships_path, notice: 'User already exists.' }
+    end
+
+  end
+
   end
 
   # PATCH/PUT /friendships/1
