@@ -7,6 +7,7 @@ Rails.application.routes.draw do
        post 'add_friend', :action => 'add_friend'
       end
   end
+  get '/orders/:id/view/' ,to: 'orders#show' ,as:"view"
   get '/orders/:id/finish/', to: 'orders#finish',as: "finish"
   get '/orders/:id/cancel/', to: 'orders#cancel',as: "cancel"
 

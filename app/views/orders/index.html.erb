@@ -27,7 +27,7 @@
             <td>Not Done Yet</td>
             <td>Not Done Yet</td>
             <td><%= order.status %></td>
-            <td><%= link_to 'View', order %></td>
+            <td><%= link_to 'View', view_path(order) %></td>
             <% if order.status == "waiting" %>
               <td><%= link_to 'Finish', finish_path(order) %></td>
               <td><%= link_to 'Cancel', cancel_path(order), data: { confirm: 'Are you sure?' } %></td>
