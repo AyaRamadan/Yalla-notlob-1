@@ -1,0 +1,30 @@
+<div class="table-wrapper col-sm-4 shadow group m-3 p-4">
+    <div class="table-title">
+        <div class="row">
+            <div class="col-sm-8">
+                <h2>Groups</h2>
+            </div>
+        </div>
+    </div>
+    <table class="table table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th>Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        <% @groups.each do |group| %>
+            <tr>
+                <td><%= link_to group.title, group %></td>
+                <td>
+                    <%= link_to group, method: :delete, data: { confirm: 'Are you sure you want to delete group?' }, remote: true,class:"delete" do %>
+                        <i class="material-icons" style="color:red">Delete</i>
+                    <% end %>
+                   
+                </td>
+            </tr>
+        <% end %>
+        </tbody>
+    </table>
+</div>

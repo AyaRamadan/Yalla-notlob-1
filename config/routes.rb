@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
 
-  resources :groups
-
+  resources :friendships
+  resources :groups do
+    member do
+       delete 'remove/:friend_id', :action => 'remove',:as => 'remove'
+       post 'add_friend', :action => 'add_friend'
+      end
+  end
   get '/orders/:id/finish/', to: 'orders#finish',as: "finish"
   get '/orders/:id/cancel/', to: 'orders#cancel',as: "cancel"
 

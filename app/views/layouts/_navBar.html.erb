@@ -17,7 +17,14 @@
       <li class="nav-item">
         <%= link_to "Groups", groups_path ,class:"nav-link" %>
       </li>
+      <li class="nav-item">
+        <%= link_to "Friends", friendships_path ,class:"nav-link" %>
+      </li>
+      
     </ul>
     <%= link_to "logout", destroy_user_session_path, method: :DELETE ,class: "btn btn-danger my-2 my-sm-0" %>
+    
+    <span class="badge badge-secondary" style="width:100px; height:30px; font:18px tahoma"><%=current_user.username%><span>
+    
   </div>
 </nav>

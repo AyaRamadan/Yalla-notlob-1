@@ -1,0 +1,33 @@
+<div class="table-wrapper col-sm-6 shadow  m-3 p-4">
+<% if defined?(@users) %>
+    <div class="row table-title">
+        <div class="col-sm-8">
+            <h2><%= @group.title %></h2>
+        </div>
+    </div>
+
+     <%= render 'add_friend', locals: { group: @group} %>
+    <div class="card-columns text-center m-2">
+
+           <% @users.each do |user| %>
+
+        <div class="card" style="width:150px">
+            
+            <div class="card-body">
+                <h4 class="card-title h6"><%= user.username %></h4>
+
+                <p class="card-text">
+                <%= link_to "Remove", remove_group_path(@group,user.id),method: :delete,data: { confirm: 'Are you sure you want to remove friend?' } %>
+                </p>
+            </div>
+            
+        </div>
+        <% end %>
+        </div>
+        
+       
+        <% end %>
+
+       
+
+</div> 
